@@ -1,0 +1,72 @@
+<style>
+    #mainContainer {
+        font-size: xx-large;
+        width: max-content;
+        position: fixed;
+    }
+    #title, #author {
+        padding: 20px;
+    }
+    #title {
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+        background-color: #5BCEFA;
+    }
+    #author {
+        background-color: #F5A9B8;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+</style>
+<div id=mainContainer style='left: -2000px'>
+    <div id=title>Your browser is blocking auto-play.</div>
+    <div id=author>Please click the primary mouse button to start.</div>
+</div>
+<audio id=audio>
+<script src='playlist.txt'></script>
+<script>
+    firstMove = true
+    to = null
+    async function nextSong() {
+        const song = playlist[Math.floor(Math.random()*playlist.length)]
+        audio.src = 'music/' + song.fileName
+        try {
+            await audio.play()
+        } catch (e) {
+            document.addEventListener('click', initialClick)
+            mainContainer.style.left = '10px'
+            return
+        }
+        title.innerText = '🎵 ' + song.displayName
+        author.innerText = '@ ' + song.author
+        movedLeft = false
+        clearTimeout(to)
+        function move() {
+            if (firstMove) {
+                mainContainer.style.left = -mainContainer.offsetWidth - 10
+            }
+            const shouldMoveRight = !movedLeft || firstMove
+            const curPos = parseInt(mainContainer.style.left)
+            const targetPos = shouldMoveRight ? 10 : -mainContainer.offsetWidth - 10
+            const newPos = curPos + (shouldMoveRight ? 3 : -3)
+            mainContainer.style.left = newPos + 'px'
+            if ((targetPos < 0 && newPos <= targetPos) || (targetPos > 0 && newPos >= targetPos)) {
+                if (movedLeft) return
+                if (!firstMove) movedLeft = true
+                to = setTimeout(move, 3000)
+            } else {
+                to = setTimeout(move, 15)
+            }
+            firstMove = false
+        }
+        to = setTimeout(move, 15)
+        
+    }
+    audio.addEventListener('ended', nextSong)
+    function initialClick () {
+        mainContainer.style.left = '-2000px'
+        setTimeout(nextSong, 500)
+        document.removeEventListener('click', initialClick)
+    }
+    nextSong()
+</script>
