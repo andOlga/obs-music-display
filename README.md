@@ -6,3 +6,5 @@ No external applications or OBS plug-ins are required for this to function. Your
 Therefore, this does not work with any streaming services, but those are garbage anyway. You will need locally stored music.
 
 A web server is not required to serve `index.html`, you can just point OBS directly to it.
+
+A `playlist.txt` file must be generated first. You can either run `genplaylist.js` for this via Node, or manually edit the provided sample file.
