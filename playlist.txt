@@ -1,0 +1,17 @@
+const playlist = [
+  {
+    "fileName": "1.ogg",
+    "displayName": "First Song",
+    "author": "First Author"
+  },
+  {
+    "fileName": "2.mp3",
+    "displayName": "Song Number 2",
+    "author": "Author the Second"
+  },
+  {
+    "fileName": "3.flac",
+    "displayName": "Third time's the Charm",
+    "author": "A Potato"
+  }
+]

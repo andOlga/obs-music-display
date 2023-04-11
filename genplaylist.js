@@ -19,7 +19,7 @@ for (const file of allFiles) {
   }
   songs.push({
     fileName: file,
-    displayName: file.replace(/\.mp3$/, '').replace(/\.ogg$/, ''),
+    displayName: file.replace(/\.mp3$/i, '').replace(/\.ogg$/i, '').replace(/\.flac$/i, ''),
     author: '???' // to be filled manually later
   })
 }
