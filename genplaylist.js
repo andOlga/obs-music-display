@@ -2,7 +2,7 @@
 // Create such a folder and place your music there before running this.
 const fs = require('fs')
 const playlistFile = 'playlist.txt'
-const header = 'const playlist = ' // put at top of playlist.js to avoid CORS, fetch and "true" JSON parsing
+const header = 'const playlist = ' // put at top of playlist.txt to avoid CORS, fetch and "true" JSON parsing
 function getSongList () {
   if (fs.existsSync(playlistFile)) {
     return JSON.parse(fs.readFileSync(playlistFile, 'utf-8').replace(header, ''))
