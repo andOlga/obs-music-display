@@ -40,6 +40,10 @@
         title.innerText = '🎵 ' + song.displayName
         author.innerText = '@ ' + song.author
         movedLeft = false
+        // The following code is garbage.
+        // It feels like it shouldn't work, but it does.
+        // If you are trying to customize this animation, I am sorry.
+        // Please just rewrite it...
         clearTimeout(to)
         function move() {
             if (firstMove) {
@@ -60,7 +64,6 @@
             firstMove = false
         }
         to = setTimeout(move, 15)
-        
     }
     audio.addEventListener('ended', nextSong)
     function initialClick () {
