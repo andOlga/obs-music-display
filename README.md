@@ -1,3 +1,5 @@
+# This repository is unmaintained. Up-to-date version on [Codeberg](https://codeberg.org/andOlga/obs-music-display).
+
 # obs-music-display
 
 ![ezgif-4-19d3f2a232](https://user-images.githubusercontent.com/462484/231411195-22e93270-d454-45bb-94a7-859086fd9f12.gif)
